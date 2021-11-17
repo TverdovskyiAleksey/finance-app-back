@@ -16,11 +16,11 @@ const userSchema = Schema({
     unique: true,
     match: [emailRegExp, 'Please fill a valid email adress'],
   },
-  subscription: {
-    type: String,
-    enum: ['starter', 'pro', 'business'],
-    default: 'starter',
-  },
+  // subscription: {
+  //   type: String,
+  //   enum: ['starter', 'pro', 'business'],
+  //   default: 'starter',
+  // },
   token: {
     type: String,
     default: null,
@@ -29,14 +29,14 @@ const userSchema = Schema({
     type: String,
     required: true,
   },
-  verify: {
-    type: Boolean,
-    default: false,
-  },
-  verifyToken: {
-    type: String,
-    required: [true, 'Verify token is required'],
-  },
+  // verify: {
+  //   type: Boolean,
+  //   default: false,
+  // },
+  // verifyToken: {
+  //   type: String,
+  //   required: [true, 'Verify token is required'],
+  // },
 }, { versionKey: false, timestamps: true });
 
 userSchema.methods.setPassword = function (password) {
@@ -50,7 +50,7 @@ userSchema.methods.comparePassword = function (password) {
 const joiSchema = Joi.object({
   email: Joi.string().pattern(emailRegExp).required(),
   password: Joi.string().min(6).required(),
-  subscription: Joi.string().valid('starter', 'pro', 'business'),
+  // subscription: Joi.string().valid('starter', 'pro', 'business'),
 });
 
 const subSchema = Joi.object({
