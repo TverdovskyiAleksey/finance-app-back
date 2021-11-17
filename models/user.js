@@ -5,6 +5,11 @@ const bcrypt = require('bcryptjs');
 const emailRegExp = /^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@([a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?.)*(biz|com|gov|info|jobs|net|org|pro|[a-z][a-z])$/;
 
 const userSchema = Schema({
+  name: {
+    type: String,
+    unique: true,
+    required: [true, 'Enter your name'],
+  },
   password: {
     type: String,
     required: [true, 'Password is required'],
@@ -53,14 +58,14 @@ const joiSchema = Joi.object({
   // subscription: Joi.string().valid('starter', 'pro', 'business'),
 });
 
-const subSchema = Joi.object({
-  subscription: Joi.string().valid('starter', 'pro', 'business'),
-})
+// const subSchema = Joi.object({
+//   subscription: Joi.string().valid('starter', 'pro', 'business'),
+// })
 
 const User = model('user', userSchema);
 
 module.exports = {
   User,
   joiSchema,
-  subSchema,
+  // subSchema,
 };
