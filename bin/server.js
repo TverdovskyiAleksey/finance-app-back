@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 
 const { DB_USER, DB_USER_PASS, DB_NAME, PORT = 3000 } = process.env;
 
-const DB_HOST = `mongodb+srv://${DB_USER}:${DB_USER_PASS}@cluster0.sn3ip.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`;
+const DB_HOST = `mongodb+srv://${DB_USER}:${DB_USER_PASS}@cluster0.p677b.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`;
 
 mongoose.connect(DB_HOST, {
   useNewUrlParser: true,
