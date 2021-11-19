@@ -6,19 +6,22 @@ const Joi = require('joi');
 
 const expenseSchema = Schema({
   date: {
-    type: Number,
+    type: Date,
+    required: [true, 'Select date'],
   },
   type: {
     type: String,
   },
   category: {
     type: String,
+    required: [true, 'Select category'],
   },
   description: {
     type: String,
   },
   sum: {
     type: Number,
+    required: true,
   },
   amount: {
     type: Number,
@@ -31,6 +34,11 @@ const expenseSchema = Schema({
 );
 
 const joiSchema = Joi.object({
+  date: Joi.date().min('now'),
+  type: Joi.string().required(),
+  category: Joi.string().required(),
+  description: Joi.string(),
+  sum: Joi.number().positive(),
   amount: Joi.number,
 });
 
