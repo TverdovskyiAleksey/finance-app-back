@@ -6,7 +6,7 @@ const listExpenses = async (req, res) => {
   const { page = 1, limit = 4 } = req.query;
   const skip = (page - 1) * limit;
   const { _id } = req.user;
-  const expenses = await Expense.find({ owner: _id }, '_id date type category description sum', { skip, limit: +limit }).populate('owner', 'email');
+  const expenses = await Expense.find({ owner: _id }, '_id date type category description sum amount', { skip, limit: +limit }).populate('owner', 'email');
   res.json({
     status: 'success',
     code: 200,
