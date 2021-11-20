@@ -30,9 +30,9 @@ const getContactById = async (req, res) => {
   });
 };
 
-const addContact = async (req, res) => {
-  const newContact = { ...req.body, owner: req.user._id };
-  const result = await Expense.create(newContact);
+const addExpenses = async (req, res) => {
+  const newExpense = { ...req.body, owner: req.user._id };
+  const result = await Expense.create(newExpense);
   res.status(201).json({
     status: 'success',
     code: 201,
@@ -96,7 +96,7 @@ const updateById = async (req, res) => {
 module.exports = {
   listExpenses,
   getContactById,
-  addContact,
+  addExpenses,
   removeContact,
   updateById,
   // updateStatusContact,

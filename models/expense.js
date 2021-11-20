@@ -11,6 +11,7 @@ const expenseSchema = Schema({
   },
   type: {
     type: String,
+    required: true,
   },
   category: {
     type: String,
