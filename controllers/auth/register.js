@@ -6,7 +6,7 @@ const { User } = require('../../models');
 // const { sendEmail } = require('../../helpers');
 
 const register = async (req, res) => {
-  const { email, password } = req.body;
+  const { name, email, password } = req.body;
   const user = await User.findOne({ email });
   if (user) {
     throw new Conflict('Already registered');
@@ -14,6 +14,7 @@ const register = async (req, res) => {
   const avatarURL = gravatar.url(email);
   // const verifyToken = nanoid();
   const newUser = new User({
+    name,
     email,
     avatarURL,
     // verifyToken,
