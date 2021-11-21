@@ -10,7 +10,7 @@ router.get('/', authenticate, controllerWrapper(ctrl.listExpenses))
 
 router.get('/:contactId', authenticate, controllerWrapper(ctrl.getContactById))
 
-router.post('/', authenticate, validation(joiSchema), controllerWrapper(ctrl.addContact))
+router.post('/', authenticate, validation(joiSchema), controllerWrapper(ctrl.addExpenses))
 
 router.delete('/:contactId', authenticate, controllerWrapper(ctrl.removeContact))
 
