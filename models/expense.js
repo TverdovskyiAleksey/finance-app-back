@@ -5,6 +5,25 @@ const Joi = require('joi');
 // const codeRegexp = /^\([0-9]{3}\)\s[0-9]{3}-[0-9]{4}$/;
 
 const expenseSchema = Schema({
+  date: {
+    type: String,
+    required: [true, 'Select date'],
+  },
+  type: {
+    type: String,
+    required: true,
+  },
+  category: {
+    type: String,
+    required: [true, 'Select category'],
+  },
+  description: {
+    type: String,
+  },
+  sum: {
+    type: Number,
+    required: true,
+  },
   amount: {
     type: Number,
   },
@@ -16,7 +35,12 @@ const expenseSchema = Schema({
 );
 
 const joiSchema = Joi.object({
-  amount: Joi.number,
+  date: Joi.string(),
+  type: Joi.string().required(),
+  category: Joi.string().required(),
+  description: Joi.string(),
+  sum: Joi.number().positive(),
+  amount: Joi.number(),
 });
 
 const Expense = model('expense', expenseSchema);

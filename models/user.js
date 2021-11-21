@@ -5,6 +5,11 @@ const bcrypt = require('bcryptjs');
 const emailRegExp = /^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@([a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?.)*(biz|com|gov|info|jobs|net|org|pro|[a-z][a-z])$/;
 
 const userSchema = Schema({
+  name: {
+    type: String,
+    unique: true,
+    required: [true, 'Enter your name'],
+  },
   password: {
     type: String,
     required: [true, 'Password is required'],
@@ -16,11 +21,11 @@ const userSchema = Schema({
     unique: true,
     match: [emailRegExp, 'Please fill a valid email adress'],
   },
-  subscription: {
-    type: String,
-    enum: ['starter', 'pro', 'business'],
-    default: 'starter',
-  },
+  // subscription: {
+  //   type: String,
+  //   enum: ['starter', 'pro', 'business'],
+  //   default: 'starter',
+  // },
   token: {
     type: String,
     default: null,
@@ -29,14 +34,14 @@ const userSchema = Schema({
     type: String,
     required: true,
   },
-  verify: {
-    type: Boolean,
-    default: false,
-  },
-  verifyToken: {
-    type: String,
-    required: [true, 'Verify token is required'],
-  },
+  // verify: {
+  //   type: Boolean,
+  //   default: false,
+  // },
+  // verifyToken: {
+  //   type: String,
+  //   required: [true, 'Verify token is required'],
+  // },
 }, { versionKey: false, timestamps: true });
 
 userSchema.methods.setPassword = function (password) {
@@ -48,19 +53,20 @@ userSchema.methods.comparePassword = function (password) {
 }
 
 const joiSchema = Joi.object({
+  name: Joi.string().required(),
   email: Joi.string().pattern(emailRegExp).required(),
   password: Joi.string().min(6).required(),
-  subscription: Joi.string().valid('starter', 'pro', 'business'),
+  // subscription: Joi.string().valid('starter', 'pro', 'business'),
 });
 
-const subSchema = Joi.object({
-  subscription: Joi.string().valid('starter', 'pro', 'business'),
-})
+// const subSchema = Joi.object({
+//   subscription: Joi.string().valid('starter', 'pro', 'business'),
+// })
 
 const User = model('user', userSchema);
 
 module.exports = {
   User,
   joiSchema,
-  subSchema,
+  // subSchema,
 };
