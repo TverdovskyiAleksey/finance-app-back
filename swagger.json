@@ -20,6 +20,9 @@
   "servers": [
     {
       "url": "http://localhost:3000"
+    },
+    {
+      "url": "https://finance-app-south-back.herokuapp.com"
     }
   ],
   "tags": [
@@ -309,16 +312,10 @@
       "LoginRequest": {
         "type": "object",
         "required": [
-          "name",
           "email",
           "password"
         ],
         "properties": {
-          "name": {
-            "type": "string",
-            "description": "User's name",
-            "example": "qwerty123"
-          },
           "email": {
             "type": "string",
             "description": "User's email",
@@ -338,16 +335,14 @@
             "type": "string",
             "description": "User's token"
           },
-          "email": {
-            "type": "string",
-            "description": "User's email",
-            "format": "email"
+          "user": {
+            "type": "object",
+            "description": "User's object"
           }
         },
         "example": [
           {
-            "token": "your token",
-            "email": "1@gmail.com"
+            "token": "your token"
           }
         ]
       },

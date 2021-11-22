@@ -8,12 +8,14 @@ const userSchema = Schema({
   name: {
     type: String,
     unique: true,
-    required: [true, 'Enter your name'],
   },
   password: {
     type: String,
     required: [true, 'Password is required'],
     minlength: 6,
+  },
+  rePassword: {
+    type: String,
   },
   email: {
     type: String,
@@ -53,9 +55,10 @@ userSchema.methods.comparePassword = function (password) {
 }
 
 const joiSchema = Joi.object({
-  name: Joi.string().required(),
+  name: Joi.string(),
   email: Joi.string().pattern(emailRegExp).required(),
   password: Joi.string().min(6).required(),
+  rePassword: Joi.string(),
   // subscription: Joi.string().valid('starter', 'pro', 'business'),
 });
 
