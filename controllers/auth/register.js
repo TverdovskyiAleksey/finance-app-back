@@ -35,6 +35,7 @@ const register = async (req, res) => {
     status: 'success',
     code: 201,
     message: 'Register success',
+    newUser,
   });
 };
 
