@@ -15,7 +15,6 @@ const expenseSchema = Schema({
   },
   category: {
     type: String,
-    required: [true, 'Select category'],
   },
   description: {
     type: String,
@@ -37,7 +36,6 @@ const expenseSchema = Schema({
 const joiSchema = Joi.object({
   date: Joi.string(),
   type: Joi.string().required(),
-  category: Joi.string().required(),
   description: Joi.string(),
   sum: Joi.number().positive(),
   amount: Joi.number(),
