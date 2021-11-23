@@ -10,9 +10,7 @@ const listExpenses = async (req, res) => {
   res.json({
     status: 'success',
     code: 200,
-    data: {
-      expenses
-    }
+    expenses
   });
 };
 
@@ -36,9 +34,7 @@ const addExpenses = async (req, res) => {
   res.status(201).json({
     status: 'success',
     code: 201,
-    data: {
-      result
-    }
+    result
   })
 };
 
