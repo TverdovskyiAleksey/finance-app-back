@@ -3,7 +3,7 @@ const { NotFound } = require('http-errors');
 const { Expense } = require('../models');
 
 const listExpenses = async (req, res) => {
-  const { page = 1, limit = 4 } = req.query;
+  const { page = 1, limit = 10 } = req.query;
   const skip = (page - 1) * limit;
   const { _id } = req.user;
   const expenses = await Expense.find({ owner: _id }, '_id date type category description sum amount', { skip, limit: +limit }).populate('owner', 'email');
