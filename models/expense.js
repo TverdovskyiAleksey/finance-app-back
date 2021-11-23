@@ -15,7 +15,7 @@ const expenseSchema = Schema({
   },
   category: {
     type: String,
-    default: '',
+    default: 'salery',
   },
   description: {
     type: String,
