@@ -13,7 +13,7 @@ const register = async (req, res) => {
   if (user) {
     throw new Conflict('Already registered');
   }
-  const token = jwt.sign(payload, SECRET_KEY);
+//   const token = jwt.sign(payload, SECRET_KEY);
   const avatarURL = gravatar.url(email);
   // const verifyToken = nanoid();
   const newUser = new User({
@@ -38,7 +38,7 @@ const register = async (req, res) => {
     status: 'success',
     code: 201,
     message: 'Register success',
-    newUser,
+    user: newUser,
   });
 };
 
